@@ -1,0 +1,28 @@
+server:
+  port: 8282
+
+spring:
+  application:
+    name: LIBRARY-SERVICE
+  datasource:
+    url: jdbc:mysql://localhost:3306/library_db?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=Asia/Kolkata
+    username: root
+    password: Kristina@14
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  jpa:
+    hibernate:
+      ddl-auto: update
+    database-platform: org.hibernate.dialect.MySQLDialect
+    open-in-view: false
+
+eureka:
+  client:
+    fetch-registry: true
+    register-with-eureka: true
+    service-url:
+      defaultZone: ${EUREKA_SERVER_ADDRESS:http://localhost:8761/eureka}
+
+# Base URL for the catalog/bookitems service:
+# If using Eureka, set to the service ID (e.g., BOOKCATALOG-SERVICE); otherwise localhost:8080
+catalog:
+  base-url:http://BOOKCATALOG-SERVICE
